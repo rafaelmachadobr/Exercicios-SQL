@@ -58,3 +58,12 @@ FROM tb_Funcionario f
 LEFT JOIN tb_Dependente d ON f.cod_Func = d.cod_Func
 LEFT JOIN tb_Cliente c ON f.cod_Func = c.cod_Cli
 LEFT JOIN tb_Conjuge co ON c.cod_Cli = co.cod_Cli;
+
+SELECT c.nome_Cli AS NomeCliente, f.nome_Func AS NomeFuncionario, t.nome_CD AS NomeCD, cat.nome_Cat AS NomeCategoria, g.nome_Grav AS NomeGravadora
+FROM tb_Cliente c
+JOIN tb_Pedido p ON c.cod_Cli = p.cod_Cli
+JOIN tb_Funcionario f ON p.cod_Func = f.cod_Func
+JOIN tb_Titulo_Pedido tp ON p.num_Ped = tp.num_Ped
+JOIN tb_Titulo t ON tp.cod_Tit = t.cod_Tit
+JOIN tb_Categoria cat ON t.cod_Cat = cat.cod_Cat
+JOIN tb_Gravadora g ON t.cod_Grav = g.cod_Grav;
